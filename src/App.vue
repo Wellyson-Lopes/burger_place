@@ -1,7 +1,7 @@
 <template>
   <Navbar :logo="logoSrc" :alt="appName" />
   <router-view />
-  <Footer />
+  <Footer> </Footer>
 </template>
 <script>
 import Navbar from './components/Navbar.vue';
