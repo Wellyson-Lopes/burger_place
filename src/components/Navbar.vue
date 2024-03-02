@@ -9,6 +9,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   name: "Navbar",
@@ -16,6 +17,7 @@ export default {
 
 }
 </script>
+
 <style scoped>
 #nav {
   background-color: #222;
