@@ -1,8 +1,7 @@
 <template>
   <div>
-    <p>Componente de Mensagem</p>
     <div>
-      <form id="burger-form">
+      <form id="burger-form" @submit="createBurger">
         <div class="input-container">
           <label for="nome">nome do cliente</label>
           <input type="text" id="nome" name="nome" v-model="nome" placeholder="Digite seu nome" />
@@ -38,6 +37,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   name: "BurgerForm",
@@ -50,7 +50,6 @@ export default {
       pao: null,
       carne: null,
       opcionais: [],
-      status: "solicitado",
       msg: null,
     }
   },
@@ -61,6 +60,30 @@ export default {
       this.paes = data.paes;
       this.carnes = data.carnes;
       this.opicionaisdata = data.opcionais;
+    },
+    async createBurger(e) {
+      e.preventDefault();
+
+      const data = {
+        nome: this.nome,
+        carne: this.carne,
+        pao: this.pao,
+        opcionais: Array.from(this.opcionais),
+        status: "Solicitado"
+      }
+      const datajson = JSON.stringify(data);
+      const req = await fetch("http://localhost:3000/burgers", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: datajson
+      });
+      const res = await req.json();
+
+      this.nome = "";
+      this.pao = "";
+      this.carne = "";
+      this.opcionais = "";
+
     }
   },
   mounted() {
@@ -68,6 +91,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
 #burger-form {
   max-width: 400px;
