@@ -15,5 +15,10 @@ yarn serve
 yarn build
 ```
 
+### Start Backand
+```
+yarn run backend
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
