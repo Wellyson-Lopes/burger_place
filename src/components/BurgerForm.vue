@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Message :msg="msg" v-show="msg" />
+    <MessageSucces :msg="msg" v-show="msg" />
     <div>
       <form id="burger-form" @submit="createBurger">
         <div class="input-container">
@@ -40,10 +40,10 @@
 </template>
 
 <script>
-import Message from './Message.vue';
+import MessageSucces from './MessageSucces.vue';
 export default {
   name: "BurgerForm",
-  components: { Message },
+  components: { MessageSucces },
   data() {
     return {
       paes: null,
@@ -166,4 +166,4 @@ select {
   background-color: transparent;
   color: #222;
 }
-</style>
+</style>./MessageSucces.vue
