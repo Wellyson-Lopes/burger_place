@@ -1,5 +1,7 @@
 <template>
   <div id="burger-table">
+    <MessageStatus :msg="msgStatus" v-show="msgStatus" />
+    <MessageError :msg="msgError" v-show="msgError" />
     <div>
       <div id="burger-table-heading">
         <div class="order-id">#:</div>
@@ -38,13 +40,19 @@
 </template>
 
 <script>
+import MessageStatus from './MessageStatus.vue';
+import MessageError from './MessageError.vue';
+
 export default {
   name: "Dashboard",
+  components: { MessageStatus, MessageError },
   data() {
     return {
       burges: null,
       burger_id: null,
-      status: []
+      status: [],
+      msgStatus: null,
+      msgError: null
     }
   },
   methods: {
@@ -69,6 +77,9 @@ export default {
 
       const res = await req.json();
 
+      this.msgError = `O pedidodo cliente: ${res.nome} foi removido!`
+      setTimeout(() => this.msgError = "", 3000)
+
       this.getPedidos();
     },
 
@@ -83,7 +94,8 @@ export default {
         body: dataJason
       });
       const res = await req.json();
-      console.log(res);
+      this.msgStatus = `Pedido Nº${res.id} foi atualizado para ${res.status}`;
+      setTimeout(() => this.msgStatus = "", 3000)
     }
   },
   mounted() {
@@ -150,4 +162,4 @@ select {
   background-color: transparent;
   color: #222;
 }
-</style>
+</style>./MessageStatus.vue

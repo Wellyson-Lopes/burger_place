@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "Message",
+  name: "MessageSucces",
   props: {
     msg: String
   }
@@ -15,9 +15,9 @@ export default {
 
 <style scoped>
 .message-container {
-  color: #004085;
-  background-color: #CCE5FF;
-  border: 2x solid #B8DAFF;
+  color: #028f09;
+  background-color: #b0ffbf;
+  border: 2x solid #caf6d5;
   border-radius: 5px;
   padding: 10px;
   max-width: 400px;
